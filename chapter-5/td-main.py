@@ -1,6 +1,6 @@
-from agent import Agent
+# from agent import Agent
 from gridWorld import GridWorld
-
+from agent import Agent
 
 def main():
     env = GridWorld()
