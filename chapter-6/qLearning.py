@@ -8,16 +8,13 @@ def main() :
 
     for episode in range (1000):
         done = False
-        history = []
-
         state = env.reset()
         while not done:
             action = agent.select_action(state)
-            s_prime , reward, done = env.step(action)
-            history.append((state, action, reward, s_prime))
-            state = s_prime
-        agent.update_table_mc(history)
-        agent.anneal_eps()
+            state_prime , reward, done = env.step(action)
+            agent.update_table_q_learning((state, action, reward, state_prime))
+            state = state_prime
+        agent.anneal_eps_q()
     agent.show_table()
 
 
